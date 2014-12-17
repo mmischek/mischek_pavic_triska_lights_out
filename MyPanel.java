@@ -7,7 +7,10 @@ import javax.swing.*;
 public class MyPanel extends JPanel {
 	
 	private MyController c;
-	private JButton[] buttons = new JButton[25];;
+	private JButton[] buttons = new JButton[25];
+	private JButton restart = new JButton("Restart");
+	private int intmoves; 
+	private JLabel lmoves = new JLabel ("Moves: " + intmoves);
 	
 	public MyPanel(MyController c){
 	
@@ -26,8 +29,13 @@ public class MyPanel extends JPanel {
 				buttons[x].setBackground(Color.YELLOW);
 			}
 		}
-		
+		JPanel twopanel = new JPanel();
+		twopanel.setLayout(new GridLayout(1, 2, 10, 10));
+		twopanel.add(lmoves);
+		twopanel.add(restart);
+		restart.addActionListener(c);
 		this.add(panel, BorderLayout.CENTER);
+		this.add(twopanel, BorderLayout.SOUTH);
 	}
 
 	/**
@@ -43,6 +51,49 @@ public class MyPanel extends JPanel {
 	public void setButtons(JButton[] buttons) {
 		this.buttons = buttons;
 	}
+
+	/**
+	 * @return the restart
+	 */
+	public JButton getRestart() {
+		return restart;
+	}
+
+	/**
+	 * @param restart the restart to set
+	 */
+	public void setRestart(JButton restart) {
+		this.restart = restart;
+	}
+
+	/**
+	 * @return the intmoves
+	 */
+	public int getIntmoves() {
+		return intmoves;
+	}
+
+	/**
+	 * @param intmoves the intmoves to set
+	 */
+	public void setIntmoves(int intmoves) {
+		this.intmoves = intmoves;
+	}
+
+	/**
+	 * @return the lmoves
+	 */
+	public JLabel getLmoves() {
+		return lmoves;
+	}
+
+	/**
+	 * @param lmoves the lmoves to set
+	 */
+	public void setLmoves(JLabel lmoves) {
+		this.lmoves = lmoves;
+	}
+	
 	
 	
 	
