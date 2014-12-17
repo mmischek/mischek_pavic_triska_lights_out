@@ -21,6 +21,7 @@ public class MyFrame extends JFrame {
 		this.add(p);
 		this.setSize(600, 600);
 		this.setResizable(true);
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 

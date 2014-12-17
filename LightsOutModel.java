@@ -1,8 +1,8 @@
 package teamarbeit;
 
-
 /**
  * Model Klasse, Ereignissteuerung
+ * 
  * @author Matthias Mischek
  * @version 1.0
  *
@@ -10,13 +10,20 @@ package teamarbeit;
 public class LightsOutModel {
 
 	private int size;
-	private boolean light[][];
+	private boolean[][] light;
 
-	public LightsOutModel(int size) {
-		this.size = size;
-		this.light = light;
+	/**
+	 * Standardkonstruktor
+	 */
+	public LightsOutModel() {
+		this.size = 5;
+		init();
 	}
 
+	/**
+	 * Initialisiert die Button
+	 * 
+	 */
 	public void init() {
 		light = new boolean[size][size];
 		for (int i = 0; i < light.length; i++) {
@@ -33,24 +40,36 @@ public class LightsOutModel {
 		}
 	}
 
+	/**
+	 * aendert die umliegenden Button + den Button selbst
+	 * 
+	 * @param f
+	 * @param g
+	 * @return
+	 */
 	public boolean[][] switched(int f, int g) {
 		light[f][g] = !light[f][g];
 
 		if (f != 0) {
-			light[f][g - 1] = !light[f][g - 1];
+			light[f][g] = !light[f - 1][g];
 		}
-		if (f != size - 1) {
-			light[f][g + 1] = !light[f][g + 1];
+		if (f != light.length - 1) {
+			light[f + 1][g] = !light[f + 1][g];
 		}
 		if (g != 0) {
-			light[f - 1][g] = !light[f - 1][g];
+			light[f][g - 1] = !light[f][g - 1];
 		}
-		if (g != size - 1) {
-			light[f + 1][g] = !light[f + 1][g];
+		if (g != light.length - 1) {
+			light[f][g + 1] = !light[f][g + 1];
 		}
 		return light;
 	}
 
+	/**
+	 * ueberpueft ob man gewonnen hat
+	 * 
+	 * @return gewonnen true/false
+	 */
 	public boolean win() {
 		boolean win = true;
 		for (int i = 0; i < light.length; i++) {
