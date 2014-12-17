@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import teamarbeit.MyPanel;
 
 /**
- * Der Controller für das Programm
+ * Der Controller fï¿½r das Programm
  * 
  * @author Pavic Antonio
  * @version 10.12.2014/ v.10
@@ -17,13 +17,15 @@ import teamarbeit.MyPanel;
 public class MyController implements ActionListener{
 
 	private MyPanel p;
-	private MyModel m;
+	private LightsOutModel m;
+	private MyFrame f;
 	
 	
 	
-	public MyController(MyPanel p){
-		this.p = p;
-		this.m = m;
+	public MyController(){
+		this.p = new MyPanel(this);
+		this.m = new LightsOutModel(5);
+		this.f = new MyFrame(p, "Lights Out Game");
 	}
 	
 	
@@ -32,9 +34,9 @@ public class MyController implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		for(int i; i < 26; i++){
+		for(int i = 0; i < 26; i++){
 			if(e.getActionCommand().equals(i)){
-				p.isEnable();
+				//p.isEnable();
 			}
 		}
 		

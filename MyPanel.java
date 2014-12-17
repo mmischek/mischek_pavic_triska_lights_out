@@ -1,33 +1,49 @@
-package Triska;
+package teamarbeit;
 
 import java.awt.*;
 
 import javax.swing.*;
 
 public class MyPanel extends JPanel {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private JButton[] buttons = new JButton[24];
 	
-	public MyPanel(MyController mc){
-		
+	private MyController c;
+	private JButton[] buttons = new JButton[25];;
+	
+	public MyPanel(MyController c){
+	
 		this.setLayout(new BorderLayout());
 		JPanel panel=new JPanel();
 		panel.setLayout(new GridLayout(5,5,5,5));
-		int random = (int) (Math.random()*25);
-		buttons[random].setEnabled(false);
+
 		for(int x=0; x<buttons.length; x++){
+			buttons[x] = new JButton();
 			panel.add(buttons[x]);
-			buttons[x].addActionListener(mc);
+			buttons[x].addActionListener(c);
 			buttons[x].setBackground(Color.GREEN);
-			buttons[x].setActionCommand(mc);
+			buttons[x].setOpaque(true);
+			buttons[x].addActionListener(c);
 			if(!buttons[x].isEnabled()){
 				buttons[x].setBackground(Color.YELLOW);
 			}
 		}
+		
 		this.add(panel, BorderLayout.CENTER);
 	}
+
+	/**
+	 * @return the buttons
+	 */
+	public JButton[] getButtons() {
+		return buttons;
+	}
+
+	/**
+	 * @param buttons the buttons to set
+	 */
+	public void setButtons(JButton[] buttons) {
+		this.buttons = buttons;
+	}
+	
+	
 	
 }

@@ -11,36 +11,45 @@ import javax.swing.JPanel;
  * @version 1.0
  *
  */
-public class LightsOutModel extends JPanel implements MouseListener  {
+public class LightsOutModel {
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+private int size;
+private boolean light[];
+
+
+public LightsOutModel(int size) {
+	this.size = size;
+}
+
+
+
+
+public void init() {
+	light = new boolean[size];
+	for (int i = 0; i < light.length; i++){
+		light[i] = true;
+	}
+	int maxSize = (int) (Math.random() * (size - 1) + 1);
+	int field;
+	for (int i = 0; i < maxSize; i++) {
+		field = (int) (Math.random() * maxSize + 1);
+		light[field] = false;
+	}
+	
+}
+
+private boolean win() {
+	for (boolean tmp : light) {
+		if (tmp)
+			return false;
 	}
 
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	return true;
+}
 
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+
+
 
 }
